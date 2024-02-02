@@ -111,7 +111,7 @@ namespace MortgageCalculator
         // Helper method to calculate equity value
         static decimal CalculateEquityValue(decimal purchasePrice, decimal totalLoanValue, decimal downPayment)
         {
-            return purchasePrice - totalLoanValue + downPayment;
+            return purchasePrice - (totalLoanValue + downPayment);
         }
 
         // Helper method to calculate monthly loan payment
@@ -121,7 +121,7 @@ namespace MortgageCalculator
             decimal monthlyInterestRate = annualInterestRate / 12;
             int numberOfPayments = loanTerm * 12;
 
-            decimal power = (decimal)Math.Pow(1 + (double)monthlyInterestRate, -numberOfPayments);
+            decimal power = (decimal)Math.Pow(1 + (double)monthlyInterestRate, - numberOfPayments);
             return (totalLoanValue * monthlyInterestRate) / (1 - power);
         }
 
